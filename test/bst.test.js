@@ -24,4 +24,23 @@ describe("Binary Search Tree tests:", () => {
     expect(bst.root.right.left.right.data).toBe(23)
     expect(bst.root.right.right.right.data).toBe(6345)
   })
+
+  test("includes: should return false if the given value is not in the tree", () => {
+    expect(bst.includes(16)).toBe(false)
+    expect(bst.includes(42)).toBe(false)
+  })
+
+  test("includes: should return true if the given value is in the tree", () => {
+    expect(bst.includes(6345)).toBe(true)
+    expect(bst.includes(23)).toBe(true)
+  })
+
+  test("insert: should place a new node in the tree, in the appropriate place", () => {
+    bst.insert(42)
+    bst.insert(2)
+    bst.insert(72)
+    expect(bst.root.right.left.right.right.data).toBe(42)
+    expect(bst.root.left.left.right.left.data).toBe(2)
+    expect(bst.root.right.right.left.data).toBe(72)
+  })
 })

@@ -42,6 +42,21 @@ class Tree {
     this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
   }
 
+  includes(value, node = this.root) {
+    if (!node) return false
+    else if (value === node.data) return true
+    else if (value < node.data) return false || this.includes(value, node.left)
+    else return false || this.includes(value, node.right)
+  }
+
+  insert(value, node = this.root) {
+    if (!node || value === node.data) return
+    else if (!node.left && value < node.data) node.left = new Node(value)
+    else if (!node.right && value > node.data) node.right = new Node(value)
+    else if (value < node.data) this.insert(value, node.left)
+    else this.insert(value, node.right)
+  }
+
 }
 
 export { Tree }
