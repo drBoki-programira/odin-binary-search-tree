@@ -1,25 +1,27 @@
 {
-  "name": "odin-recursion",
+  "name": "odin-binary-search-tree",
   "version": "1.0.0",
-  "description": "Practicing recursive functions",
+  "description": "Binary search tree implementation in javascript.",
   "main": "index.js",
   "directories": {
     "test": "test"
+    
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drBoki-programira/odin-recursion.git"
+    "url": "git+https://github.com/drBoki-programira/odin-binary-search-tree.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drBoki-programira/odin-recursion/issues"
+    "url": "https://github.com/drBoki-programira/odin-binary-search-tree/issues"
   },
-  "homepage": "https://github.com/drBoki-programira/odin-recursion#readme",
+  "homepage": "https://github.com/drBoki-programira/odin-binary-search-tree#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.29.3",
     "jest": "^30.3.0"
