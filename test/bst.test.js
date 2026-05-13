@@ -43,4 +43,31 @@ describe("Binary Search Tree tests:", () => {
     expect(bst.root.left.left.right.left.data).toBe(2)
     expect(bst.root.right.right.left.data).toBe(72)
   })
+
+  test("deleteItem: should do nothing if value is not in the tree", () => {
+    const treeBefore = JSON.stringify(smallBst)
+    smallBst.deleteItem(6345)
+    const treeAfter = JSON.stringify(smallBst)
+    expect(treeBefore).toEqual(treeAfter)
+  })
+
+  test("deleteItem: should remove node from the tree (leaf node)", () => {
+    bst.deleteItem(6345)
+    expect(bst.root.right.right.right).toBe(null)
+  })
+
+  test("deleteItem: should remove node from the tree and keep the bst structure (one child)", () => {
+    bst.deleteItem(324)
+    expect(bst.root.right.right.data).toBe(6345)
+    expect(bst.root.right.right.right).toBe(null)
+  })
+
+  test("deleteItem: should remove node from the tree and keep the bst structure (both children)", () => {
+    bst.deleteItem(67)
+    expect(bst.root.right.data).toBe(324)
+    expect(bst.root.right.right.data).toBe(6345)
+    expect(bst.root.right.left.data).toBe(9)
+    bst.deleteItem(8)
+    expect(bst.root.data).toBe(9)
+  })
 })
