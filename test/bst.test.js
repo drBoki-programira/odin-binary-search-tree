@@ -70,4 +70,44 @@ describe("Binary Search Tree tests:", () => {
     bst.deleteItem(8)
     expect(bst.root.data).toBe(9)
   })
+
+  test("levelOrderForEach: should throw an error if no callback is passed", () => {
+    expect(() => bst.levelOrderForEach()).toThrow(TypeError)
+  })
+
+  test("levelOrderForEach: should call the provided callback on each node, breadth first traversal", () => {
+    let list = []
+    bst.levelOrderForEach((value) => list.push(value))
+    expect(list).toEqual([8, 4, 67, 1, 5, 9, 324, 3, 7, 23, 6345])
+  })
+
+  test("inOrderForEach: should throw an error if no callback is passed", () => {
+    expect(() => bst.inOrderForEach()).toThrow(TypeError)
+  })
+
+  test("inOrderForEach: should call the provided callback on each node, inorder depth first", () => {
+    let list = []
+    bst.inOrderForEach((value) => list.push(value))
+    expect(list).toEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345])
+  })
+
+  test("preOrderForEach: should throw an error if no callback is passed", () => {
+    expect(() => bst.preOrderForEach()).toThrow(TypeError)
+  })
+
+  test("preOrderForEach: should call the provided callback on each node, preorder depth first", () => {
+    let list = []
+    bst.preOrderForEach((value) => list.push(value))
+    expect(list).toEqual([8, 4, 1, 3, 5, 7, 67, 9, 23, 324, 6345])
+  })
+
+  test("postOrderForEach: should throw an error if no callback is passed", () => {
+    expect(() => bst.postOrderForEach()).toThrow(TypeError)
+  })
+
+  test("postOrderForEach: should call the provided callback on each node, postorder depth first", () => {
+    let list = []
+    bst.postOrderForEach((value) => list.push(value))
+    expect(list).toEqual([3, 1, 7, 5, 4, 23, 9, 6345, 324, 67, 8])
+  })
 })

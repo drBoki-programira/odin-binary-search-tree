@@ -88,7 +88,62 @@ class Tree {
     }
 
     return node
-  } 
+  }
+
+  levelOrderForEach(callback) {
+    if (typeof callback !== "function") throw new TypeError("Argument must be a callback.")
+    let queue = [this.root]
+
+    while (queue.length !== 0) {
+      let node = queue.shift()
+
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
+      
+      callback(node.data)
+    }
+  }
+  // recursive
+  // levelOrderForEach(callback, queue = [this.root]) {
+  //   if (typeof callback !== "function") throw new TypeError("Argument must be a callback.")
+  //   if (queue.length === 0) return
+
+  //   let node = queue.shift()
+  //   if (node.left) queue.push(node.left)
+  //   if (node.right) queue.push(node.right)
+
+  //   callback(node.data)
+
+  //   this.levelOrderForEach(callback, queue)
+  //   this.levelOrderForEach(callback, queue)
+  // }
+
+  inOrderForEach(callback, node = this.root) {
+    if (typeof callback !== "function") throw new TypeError("Argument must be a callback.")
+    if (!node) return
+
+    this.inOrderForEach(callback, node.left)
+    callback(node.data)
+    this.inOrderForEach(callback, node.right)
+  }
+
+  preOrderForEach(callback, node = this.root) {
+    if (typeof callback !== "function") throw new TypeError("Argument must be a callback.")
+    if (!node) return
+  
+    callback(node.data)
+    this.preOrderForEach(callback, node.left)
+    this.preOrderForEach(callback, node.right)
+  }
+
+  postOrderForEach(callback, node = this.root) {
+    if (typeof callback !== "function") throw new TypeError("Argument must be a callback.")
+    if (!node) return
+    
+    this.postOrderForEach(callback, node.left)
+    this.postOrderForEach(callback, node.right)
+    callback(node.data)
+  }
 }
 
 export { Tree }
